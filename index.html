@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Photography Portfolio</title>
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Navbar Placeholder */
+        .navbar-placeholder {
+            height: 60px;
+            background-color: #d3c8a7;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Container for centering */
+        .gallery-container {
+            width: 80%;
+            max-width: 1500px;
+            height: 70%;
+            margin: 80px auto 0; /* Gap from top and center horizontally */
+            position: relative;
+            background-color: #fff;
+        }
+
+        .gallery {
+            width: 100%;
+            height: 400px; /* Fixed height for gallery */
+            position: relative;
+            background-color: #fff;
+            overflow: hidden; /* Hide overflow outside the wrapper */
+        }
+
+        .image-wrapper {
+            width: 70%; /* Smaller than .gallery-container, adjust as needed */
+            height: 100%;
+            margin: 0 auto; /* Center within .gallery */
+            position: relative;
+            overflow: visible; /* Allow snippets to show outside wrapper */
+        }
+
+        .slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-out;
+            will-change: transform;
+            position: absolute;
+            left: 0;
+        }
+
+        .slide {
+            flex: 0 0 calc(33.33% - 20px); /* Three images based on .image-wrapper width */
+            height: 100%;
+            position: relative;
+            margin: 0 10px; /* Gap between images */
+            background-color: #d3c8a7;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+            opacity: 1;
+        }
+
+        .arrows {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .arrows .left,
+        .arrows .right {
+            cursor: pointer;
+        }
+
+        .arrows .left.disabled,
+        .arrows .right.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .arrows svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: #333;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-container {
+                width: 90%;
+                margin-top: 70px;
+            }
+
+            .gallery {
+                height: 300px;
+            }
+
+            .image-wrapper {
+                width: 80%; /* Slightly larger on mobile */
+            }
+
+            .arrows svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+
+            .slide {
+                flex: 0 0 calc(33.33% - 10px);
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <!-- Centered Container -->
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="image-wrapper">
+                <div id="slider" class="slider">
+                    <!-- Images will be dynamically added here -->
+                </div>
+                <div class="arrows">
+                    <div class="left">
+                        <svg viewBox="0 0 512 512" title="chevron-circle-left">
+                            <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c9.4-9.4-24.6-9.4-33.9 0L142.1 239c9.4 9.4-9.4 24.6 0 34z" />
+                        </svg>
+                    </div>
+                    <div class="right">
+                        <svg viewBox="0 0 512 512" title="chevron-circle-right">
+                            <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l17-17c9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const gallery = document.getElementById("slider");
+        const left = document.getElementsByClassName("left")[0];
+        left.classList.add("disabled");
+        const right = document.getElementsByClassName("right")[0];
+        let currentIndex = 0;
+
+        // Define your images (15 images total: 5 from each category)
+        const imageCategories = [
+            { category: "gaidibas", images: ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg", "photo5.jpg"] },
+            { category: "gimenes", images: ["photo1.jpg", "photob2.jpg", "photo6.jpg", "photo4.jpg", "photo5.jpg"] },
+            { category: "pari", images: ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg", "photo5.jpg"] }
+        ];
+
+        // Flatten the image list into a single array with full paths
+        const images = imageCategories.reduce((acc, category) => {
+            const categoryImages = category.images.map(image => `images/${category.category}/${image}`);
+            return acc.concat(categoryImages);
+        }, []);
+
+        function init() {
+            images.forEach((src, index) => {
+                const slide = document.createElement("div");
+                slide.classList.add("slide");
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = `Image ${index + 1}`;
+                img.onerror = () => console.error(`Failed to load image: ${src}`);
+                img.onload = () => console.log(`Loaded image: ${src}`);
+                slide.appendChild(img);
+                gallery.appendChild(slide);
+            });
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const slideWidth = gallery.querySelector('.slide').offsetWidth;
+            gallery.style.transform = `translateX(-${currentIndex * (slideWidth + 20)}px)`; // 20px accounts for total gap
+            left.classList.toggle("disabled", currentIndex === 0);
+            right.classList.toggle("disabled", currentIndex >= images.length - 3); // Show 3 images
+        }
+
+        left.onclick = function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        };
+
+        right.onclick = function () {
+            if (currentIndex < images.length - 3) {
+                currentIndex++;
+                updateSlider();
+            }
+        };
+
+        init();
+
+        // Preload images to improve performance
+        images.forEach(src => {
+            const preloadImg = new Image();
+            preloadImg.src = src;
+            preloadImg.onerror = () => console.error(`Preload failed for: ${src}`);
+        });
+
+        // Update slider on window resize
+        window.addEventListener('resize', updateSlider);
+    </script>
+</body>
+</html>
