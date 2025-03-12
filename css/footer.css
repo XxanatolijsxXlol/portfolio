@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playfair Display", serif;
+}
+
+.footer {
+    background-color: #f7f3ea; /* Light beige background */
+    padding: 70px 30px 40px;
+    position: relative;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, #c4b8a1 50%, transparent 100%);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-left {
+    grid-column: 1 / 5;
+    text-align: left;
+}
+
+.footer-center {
+    grid-column: 5 / 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-right {
+    grid-column: 9 / 13;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.footer-title {
+    color: #333;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-title::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background-color: #a78959; /* Gold accent color */
+}
+
+/* Center line for the center column */
+.footer-center .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-right .footer-title::after {
+    left: auto;
+    right: 0;
+}
+
+.instagram-handle {
+    color: #706c64;
+    font-size: 16px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 15px 0;
+    color: #333;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #a78959;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #333;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #333;
+}
+
+.social-icon:hover svg {
+    fill: #f7f3ea;
+}
+
+.social-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #333;
+    transition: fill 0.3s ease;
+}
+
+/* Instagram specific styling */
+.instagram-icon {
+    border-color: #a78959; /* Using the gold accent color from your existing palette */
+    background-color: rgba(167, 137, 89, 0.1); /* Light gold background */
+}
+
+.instagram-icon svg {
+    fill: #a78959; /* Using the gold accent color */
+}
+
+.instagram-icon:hover {
+    background-color: #a78959;
+}
+
+.instagram-icon:hover svg {
+    fill: #f7f3ea;
+}
+
+.contact-text {
+    color: #706c64;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 280px;
+    text-align: right;
+    margin-left: auto;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #a78959;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    border: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+.contact-button:hover {
+    background-color: #8e7548;
+}
+
+.contact-button:hover::before {
+    left: 100%;
+}
+
+.copyright {
+    grid-column: 1 / 13;
+    text-align: center;
+    color: #706c64;
+    font-size: 13px;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(167, 137, 89, 0.2);
+}
+
+.contact-info {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+}
+
+@media (max-width: 992px) {
+    .footer {
+        padding: 60px 20px 30px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+    }
+    
+    .footer-left {
+        grid-column: 1 / 2;
+        grid-row: 1;
+        text-align: left;
+    }
+    
+    .footer-center {
+        grid-column: 1 / 2;
+        grid-row: 2;
+        text-align: left;
+        align-items: flex-start;
+    }
+    
+    .footer-center .footer-title::after {
+        left: 0;
+        transform: none;
+    }
+    
+    .instagram-handle {
+        text-align: left;
+    }
+    
+    .footer-center div {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .footer-right {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+        text-align: right;
+        align-items: flex-end;
+    }
+    
+    .footer-left .footer-title::after,
+    .footer-center .footer-title::after {
+        left: 0;
+        transform: none;
+    }
+    
+    .footer-right .footer-title::after {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+    
+    .contact-text {
+        text-align: right;
+        margin-left: auto;
+        max-width: 280px;
+    }
+    
+    .copyright {
+        margin-top: 40px;
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    
+    .footer-left {
+        grid-row: auto;
+    }
+    
+    .footer-center {
+        grid-row: auto;
+    }
+    
+    .footer-right {
+        grid-row: auto;
+    }
+    
+    .footer-left, .footer-center, .footer-right {
+        grid-column: 1 / -1;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .footer-title::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    .instagram-handle {
+        text-align: center;
+    }
+    
+    .footer-center div {
+        justify-content: center;
+    }
+    
+    .contact-info {
+        text-align: center;
+    }
+    
+    .contact-text {
+        text-align: center;
+        margin: 0 auto 25px;
+    }
+    
+    .footer {
+        padding: 50px 15px 25px;
+    }
+    
+    .contact-button {
+        padding: 10px 24px;
+    }
+}
