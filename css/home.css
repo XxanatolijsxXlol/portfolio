@@ -1,74 +1,397 @@
-.gallery {
-    max-width: 1200px;
-    width: 100%;
-    height: 70vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff; /* White background */
+    color: #333;
+    margin: 0 40px; /* Cleaner side margins */
+}
+
+/* Header and Logo */
+.header {
     position: relative;
+    background-color: #fff; /* White background */
+}
+button .nav-left .nav-left{
+    display: none;
+}
+.logo-container {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fff; /* White background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Navbar Placeholder */
+.navbar-placeholder {
+    height: 60px;
+    background-color: #d3c8a7; /* Kept as is for contrast, change to #fff if desired */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 100px; /* Adjust based on logo height */
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Container for centering */
+.gallery-container {
+    width: 95%;
+    max-width: 1500px;
+    height: 80vh;
+    margin: 50px auto 0;
+    position: relative;
+    background-color: #fff; /* White background */
+    overflow: visible; /* Allow images to peek out on both sides */
+}
+
+/* Clickable areas for navigation */
+.gallery-container::before,
+.gallery-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.gallery-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.gallery-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.gallery {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #fff; /* White background */
+    overflow: hidden; /* Hide overflow within the gallery area */
+}
+
+.image-wrapper {
+    width: 85%; /* Reduced from 90% to allow peeking on both sides */
+    height: 100%;
     margin: 0 auto;
-    background-color: #d3c8a7;
-    overflow: hidden;
+    position: relative;
+    overflow: visible; /* Allow images to peek out on both sides */
 }
 
 .slider {
     display: flex;
     height: 100%;
-    transition: transform 0.5s ease-out;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
     will-change: transform;
+    position: absolute;
+    left: 0;
 }
 
 .slide {
-    flex: 0 0 100%;
+    flex: 0 0 calc(40% - 5px); /* Bigger images */
     height: 100%;
     position: relative;
+    margin: 0 2.5px; /* Smaller gap */
+    background-color: #fff; /* White background */
     overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.slide:hover {
+    transform: scale(1.02);
 }
 
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 6px;
     display: block;
-    loading: lazy;
+  
+    transition: opacity 0.5s ease;
 }
 
-.arrows {
+.slide img.loaded {
+    opacity: 1;
+}
+
+/* Loading Spinner */
+.loading-spinner {
     position: absolute;
-    bottom: 20px;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 100;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #d3c8a7; /* Kept for contrast, change to #fff if desired */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* About Me Section */
+.about-me {
+    padding: 80px 0;
+    background-color: #fff; /* White background */
+    text-align: center;
+}
+
+.about-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.about-content {
     display: flex;
-    justify-content: space-around;
-    z-index: 4;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.arrows .left,
-.arrows .right {
-    cursor: pointer;
+.about-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
 }
 
-.arrows .left.disabled,
-.arrows .right.disabled {
-    opacity: 0.5;
-    pointer-events: none;
+.about-text {
+    max-width: 600px;
+    text-align: left;
 }
 
-.arrows svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    fill: #333;
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #666;
 }
 
-/* Show next image partially */
-.slider {
-    overflow: visible;
+/* Portfolio Section */
+.portfolio {
+    padding: 80px 0;
+    background-color: #fff; /* White background */
+    text-align: center;
 }
 
-.slide {
-    width: 50%; /* Halve the image width for partial visibility */
-    position: absolute;
-    left: 0;
+.portfolio-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.slide img {
+.portfolio-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.portfolio-category {
+    margin-bottom: 60px;
+}
+
+.portfolio-category h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff; /* White background */
+}
+
+.portfolio-item img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        margin: 0 20px; /* Reduced margin on mobile */
+    }
+
+    .logo-container {
+        padding: 10px 0;
+    }
+
+    .logo {
+        max-width: 150px;
+    }
+
+    .navbar-placeholder {
+        margin-top: 70px;
+    }
+
+    .gallery-container {
+        width: 90%;
+        height: 50vh;
+        margin-top: 130px;
+    }
+
+    .gallery {
+        height: 100%;
+    }
+
+    .image-wrapper {
+        width: 80%; /* Reduced from 90% to allow peeking on both sides */
+    }
+
+    .slide {
+        flex: 0 0 calc(60% - 5px); /* Bigger images on mobile */
+        margin: 0 2.5px;
+    }
+
+    .about-container h2,
+    .portfolio-container h2 {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .about-image {
+        max-width: 250px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .portfolio-category h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    background-color: #d3c8a7; /* Kept for contrast, change to #fff if desired */
+    padding: 0 20px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 20px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    padding: 10px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+    color: #666;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #d3c8a7; /* Kept for contrast, change to #fff if desired */
+    list-style: none;
+    padding: 10px 0;
+    min-width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        background-color: #e0d4a7; /* Kept for contrast, change to #fff if desired */
+    }
 }
