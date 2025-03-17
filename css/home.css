@@ -40,22 +40,7 @@ button .nav-left .nav-left {
     height: auto;
 }
 
-/* Navbar Placeholder */
-.navbar-placeholder {
-    height: 60px;
-    background-color: #d3c8a7; /* Kept as is for contrast, change to #fff if desired */
-    width: 100%;
-    position: fixed;
-    top: 0;
-    margin-top: 100px; /* Adjust based on logo height */
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-    font-size: 14px;
-    text-align: center;
-}
+
 
 /* Gallery container styles */
 .gallery-container {
@@ -125,7 +110,7 @@ button .nav-left .nav-left {
     font-size: 2rem;
     padding: 10px;
     cursor: pointer;
-    z-index: 100;
+    z-index: 1;
     transition: transform 0.3s ease, background 0.3s ease;
     border-radius: 50%;
     width: 50px;

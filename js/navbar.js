@@ -1,9 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
+// Function to set up event listeners
+function setupEventListeners() {
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
     const backdrop = document.querySelector('.backdrop');
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Check if required elements exist
+    if (!hamburger || !nav || !backdrop) {
+        console.error('One or more required elements (.hamburger, nav, .backdrop) are missing in the DOM.');
+        return;
+    }
 
     // Toggle mobile menu
     hamburger.addEventListener('click', function() {
@@ -92,35 +99,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
-
-
-// If you're including navbar.html via fetch in other pages
-if (document.getElementById('navbar')) {
-    fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-        
-        // Re-initialize JavaScript after loading navbar
-        const scriptElement = document.createElement('script');
-        scriptElement.src = 'navbar.js';
-        document.body.appendChild(scriptElement);
-    })
-    .catch(error => console.error('Error loading navbar:', error));
 }
-=======
-fetch('/portfolio/navbar.html')  // Correct root-relative path
-.then(response => response.text())
-.then(data => {
-  document.getElementById('navbar').innerHTML = data;
-})
-.catch(error => console.error('Error loading navbar:', error));
 
-fetch('/portfolio/footer.html')  // Correct root-relative path
-.then(response => response.text())
-.then(data => {
-  document.getElementById('footer').innerHTML = data;
-})
-.catch(error => console.error('Error loading footer:', error));
+// Load navbar and footer, then set up event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch navbar
+    fetch('/portfolio/navbar.html') // Adjust path if needed
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load navbar.html');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+            // Set up event listeners after navbar is loaded
+            setupEventListeners();
+        })
+        .catch(error => console.error('Error loading navbar:', error));
 
+    // Fetch footer
+    fetch('/portfolio/footer.html') // Adjust path if needed
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load footer.html');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+});

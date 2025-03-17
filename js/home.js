@@ -29,6 +29,7 @@ for (let i = 1; i <= 3; i++) {
     });
 }
 
+
 // Create a copy of the original images array with clones at beginning and end
 let images = [];
 

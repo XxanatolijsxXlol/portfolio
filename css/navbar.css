@@ -40,21 +40,20 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 25px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 14px;
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 nav ul li:not(:last-child)::after {
     content: "-";
-    margin-left: 30px;
-    color: #333;
-    position: static;
-    transform: none;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
 }
 
 nav ul li > a {
@@ -63,7 +62,6 @@ nav ul li > a {
     display: block;
     text-transform: uppercase; /* This ensures main menu items stay uppercase */
 }
-
 nav ul li.dropdown ul.dropdown-menu li a {
     text-transform: none;
 }
@@ -78,10 +76,11 @@ nav ul li a:hover {
 }
 
 .dropdown-menu {
+    /* Keep your existing styles */
     position: absolute;
     top: 100%;
-    left: 35%; /* Center the dropdown under the parent */
-    transform: translateX(-50%); /* Center the dropdown under the parent */
+    left: 50%;
+    transform: translateX(-50%);
     background-color: white;
     min-width: 150px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -102,7 +101,6 @@ nav ul li a:hover {
     visibility: visible;
     transition: opacity 0.3s, visibility 0s;
 }
-
 .dropdown::after {
     content: "";
     position: absolute;
@@ -128,7 +126,6 @@ nav ul li a:hover {
     width: 100%;
     text-transform: none; /* Reset the uppercase transformation */
 }
-
 .dropdown-menu li a:hover {
     background-color: transparent; /* Remove gray background */
     color: #a78959; /* Keep the same hover color as other menu items */
@@ -139,7 +136,7 @@ nav ul li a:hover {
     content: "";
     position: absolute;
     top: -10px;
-    left: 50%; /* Center the triangle under the parent */
+    left: 50%;
     transform: translateX(-50%);
     border-width: 5px;
     border-style: solid;
@@ -172,7 +169,6 @@ nav ul li a:hover {
 }
 
 /* Mobile styles */
-/* Mobile styles */
 @media (max-width: 768px) {
     .desktop-logo {
         display: none;
@@ -201,8 +197,8 @@ nav ul li a:hover {
     }
 
     .mobile-logo {
-        display: block;
-        text-align: center;
+        display: flex;
+        justify-content: center;
         margin-bottom: 30px;
         margin-top: 10px;
     }
@@ -220,62 +216,41 @@ nav ul li a:hover {
     nav ul li {
         margin: 15px 0;
         text-align: center;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
-
-    nav ul li:not(:last-child)::after {
-        display: none; /* No dividers on mobile */
-    }
-
     nav ul li > a {
         text-transform: uppercase;
-        width: 100%;
-        text-align: center;
     }
-
     nav ul li.dropdown ul.dropdown-menu li a {
         text-transform: none;
     }
 
-    /* Mobile dropdown styles */
-    .dropdown {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+    nav ul li:not(:last-child)::after {
+        content: "";
     }
 
+    /* Mobile dropdown styles */
     .dropdown-menu {
         position: static;
         transform: none;
-        left: auto;
         box-shadow: none;
         background-color: transparent;
+        margin-top: 10px;
         width: 100%;
         opacity: 1;
         visibility: hidden;
-        max-height: 0;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        display: none;
         padding: 0;
-        margin: 0;
-        transition: max-height 0.3s ease, visibility 0s 0.3s;
+        transition: none;
     }
-
     .dropdown:hover .dropdown-menu {
-        display: flex;
+        display: none;
         opacity: 1;
         visibility: hidden;
-        max-height: 0;
     }
-
     .dropdown::after {
         display: none;
     }
+
 
     .dropdown-menu::before {
         display: none;
@@ -285,44 +260,28 @@ nav ul li a:hover {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
     }
 
     .dropdown-toggle::after {
         content: "▼";
         font-size: 10px;
         margin-left: 8px;
-        transition: transform 0.3s ease;
     }
 
     .dropdown.active .dropdown-menu {
+        display: flex;
         visibility: visible;
-        max-height: 500px; /* Large enough for all items */
-        margin-top: 10px;
-        transition: max-height 0.3s ease, visibility 0s;
     }
 
     .dropdown.active .dropdown-toggle::after {
         content: "▲";
     }
 
-    .dropdown-menu li {
-        margin: 5px 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .dropdown-menu li a {
-        padding: 5px 0;
-        color: #333;
-        display: block;
-        width: 100%;
-        text-transform: none;
-    }
-
     .dropdown-menu li a:hover {
         background-color: transparent;
-        color: #a78959;
+    }
+    .dropdown-menu li a {
+        text-transform: lowercase; /* Maintain lowercase in mobile */
     }
 
     .backdrop {
