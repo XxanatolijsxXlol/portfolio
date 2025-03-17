@@ -5,23 +5,280 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Photography Portfolio</title>
     <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Existing CSS for other sections remains unchanged */
+        .portfolio-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #f9f6f0;
+            position: relative;
+        }
+
+        .portfolio-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .portfolio-section h2 .fa-arrow-right {
+            font-size: 1.5rem;
+            color: #666;
+            margin-left: 10px;
+            vertical-align: middle;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .portfolio-section h2:hover {
+            color: #666;
+            transform: scale(1.05);
+        }
+
+        .portfolio-section h2:hover .fa-arrow-right {
+            transform: translateX(5px);
+            color: #666;
+        }
+
+        /* New CSS for the portfolio link boxes */
+        .link-boxes {
+            height: 80vh;
+         /* Adjusted height to fit within section */
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    -webkit-justify-content: center;
+                    justify-content: center;
+            -webkit-box-align: stretch;
+                -ms-flex-align: stretch;
+                    -webkit-align-items: stretch;
+                    align-items: stretch;
+                    font-family: 'Playfair Display', serif;
+         
+        }
+
+        .box1,
+        .box2,
+        .box3,
+        .box4 {
+            filter: grayscale(1);
+            -ms-flex-preferred-size: 25%; /* Adjusted for 4 boxes (100% / 4) */
+                -webkit-flex-basis: 25%;
+                    flex-basis: 25%;
+            -webkit-transition: 0.5s flex-basis cubic-bezier(0.23, 1, 0.32, 1);
+            -o-transition: 0.5s flex-basis cubic-bezier(0.23, 1, 0.32, 1);
+            transition: 0.5s flex-basis cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                    -webkit-justify-content: flex-end;
+                    justify-content: flex-end;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    -webkit-align-items: center;
+                    align-items: center;
+            background-position: center;
+            -webkit-background-size: cover;
+                    background-size: cover;
+        }
+
+        .box1:hover,
+        .box2:hover,
+        .box3:hover,
+        .box4:hover {
+            transition: 0.5s;
+            -ms-flex-preferred-size: 30%; /* Reduced from 40% to 30% for less zooming */
+                -webkit-flex-basis: 30%;
+                    flex-basis: 30%;
+                    filter: grayscale(0);
+        }
+
+        .box1:after,
+        .box2:after,
+        .box3:after,
+        .box4:after {
+            content: "";
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            
+            left: 0;
+            top: 0;
+            -webkit-transition: 0.5s background-color cubic-bezier(0.23, 1, 0.32, 1), 0.5s filter ease;
+            -o-transition: 0.5s background-color cubic-bezier(0.23, 1, 0.32, 1), 0.5s filter ease;
+            transition: 0.5s background-color cubic-bezier(0.23, 1, 0.32, 1), 0.5s filter ease;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-align-content: center;
+                -ms-flex-line-pack: center;
+                    align-content: center;
+            font-size: 4em;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            text-align: center;
+            color: white;
+            /* Added grayscale effect to the overlay by default */
+        }
+
+        .box1:after {
+         
+            content: "Gaidības";
+        
+        }
+
+        .box2:after {
+            content: "Ģimenes";
+          
+        }
+
+        .box3:after {
+            content: "Portreti";
+          
+        }
+
+        .box4:after {
+            content: "Pāri";
+           
+        }
+
+   
+    </style>
 </head>
 <body>
     <div id="navbar"></div>
+    
+
     <div class="gallery-container">
         <div class="gallery">
             <div class="image-wrapper">
                 <div id="slider" class="slider"></div>
             </div>
         </div>
-        <button class="nav-left">◄</button>
-        <button class="nav-right">►</button>
-        <div id="navDots" class="nav-dots"></div>
+        <button class="nav-left"><i class="fas fa-arrow-left"></i></button>
+        <button class="nav-right"><i class="fas fa-arrow-right"></i></button>
         <div class="loading-spinner" id="loadingSpinner">
             <div class="spinner"></div>
         </div>
     </div>
+    <section class="about-me" id="about">
+        <div class="about-container">
+            <h2>Par mani</h2>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img src="images/allimages/profileimg2.jpg" alt="Photographer's Portrait" class="about-image">
+                </div>
+                <div class="about-text">
+                    <p>Čau! Mani sauc Ieva un es ļoti priecājos Tevi šeit satikt!</p>
+                    <p>Es specializējos kāzu, ģimeņu, pāru, portretu un gaidību fotografēšanā, tāpēc labprāt iemūžināšu Tavus īpašos dzīves mirkļus. Bet nu jau vairāk kā gadu esmu arī <span class="highlight">sieviešu fototerapeite</span>, tāpēc, ja vēlies ieskatīties sevī dziļāk un iepazīt sevi tuvāk, aicinu Tevi uz unikālu pieredzi dziedinošās un terapeitiskās fotosesijās.</p>
+                    <p>Katras kāzas, jūsu ģimeniskie mirkļi, katrs mīlestības pilnais skatiens - tie visi ir būtiski mirkļi, kas veido mūsu dzīvi. Man ir liels gods un prieks būt daļai no šiem svarīgajiem notikumiem un palīdzēt radīt fotogrāfijas, kas ne tikai palīdzēs saglabāt šos mirkļus jūsu atmiņās, bet arī sniegs iespēju vēlreiz izdzīvot tos brīžus, kas ir iemūžināti.</p>
+                    <p>Mana misija ir radīt fotogrāfijas, kas ne tikai skaisti un dabīgi izskatās, bet arī stāsta jūsu stāstus un atspoguļo jūsu unikalitāti, personību, dzīves svarīgākos mirkļus, mīlestību un emocijas.</p>
+                    <p>Strādājot ar pāriem, ģimenēm vai bildējot portretus, man ir svarīgi uzturēt vieglu, nepiespiestu un draudzīgu atmosfēru, lai Tu justos brīvi un ērti. Vienmēr esmu arī atvērta radošām un autentiskām foto-idejām.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Portfolio Section -->
+<section class="portfolio-section">
+    <a href="portfolio.html" class="portfolio-link">
+        <h4>Man's Portfolio</h4>
+    </a>
+    <div class="card-container">
+        <!-- Card 1: Gaidibas -->
+        <a href="/portfolio/PORTFOLIO-GRID/gaidibas-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/gaidibas/photogaidibas2.jpg" alt="Gaidibas">
+                <div class="portfolio-category">
+                    <h3>Gaidibas <i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+               
+                    <p>Apskatīt bildes</p>
+               
+            </div>
+        </div>
+    </a>
+        <!-- Card 2: Families -->
+        <a href="/portfolio/PORTFOLIO-GRID/gimenes-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/gimenes/photogimenes7.jpg" alt="Families">
+                <div class="portfolio-category">
+                    <h3>Ģimenes<i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+                
+                    <p>Apskatīt bildes</p>
+                   
+           
+            </div>
+        </div>
+    </a>
+        <!-- Card 3: Portraits -->
+        <a href="/portfolio/PORTFOLIO-GRID/portreti-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/portreti/portrets-photo12.jpg" alt="Portraits">
+                <div class="portfolio-category">
+                    <h3>Portreti <i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+               
+                    <p>Apskatīt bildes</p>
+                
+            </div>
+        </div>
+    </a>
+        <!-- Card 4: Events -->
+        <a href="/portfolio/PORTFOLIO-GRID/pari-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/pari/pari-photo35.jpg" alt="Events">
+                <div class="portfolio-category">
+                    <h3>Pāri <i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+                
+                    <p>Apskatīt bildes</p>
+               
+            </div>
+        </div>
+    </a>
+    </div>
+
+</section>
     <script src="js/home.js"></script>
     <script src="js/navbar.js"></script>
+    <div id="footer"></div>
+
 </body>
 </html>

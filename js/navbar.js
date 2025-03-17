@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 // If you're including navbar.html via fetch in other pages
 if (document.getElementById('navbar')) {
     fetch('navbar.html')
@@ -108,3 +109,18 @@ if (document.getElementById('navbar')) {
     })
     .catch(error => console.error('Error loading navbar:', error));
 }
+=======
+fetch('/portfolio/navbar.html')  // Correct root-relative path
+.then(response => response.text())
+.then(data => {
+  document.getElementById('navbar').innerHTML = data;
+})
+.catch(error => console.error('Error loading navbar:', error));
+
+fetch('/portfolio/footer.html')  // Correct root-relative path
+.then(response => response.text())
+.then(data => {
+  document.getElementById('footer').innerHTML = data;
+})
+.catch(error => console.error('Error loading footer:', error));
+

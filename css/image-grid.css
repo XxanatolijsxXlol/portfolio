@@ -1,0 +1,100 @@
+/* Style for the section container */
+section {
+    margin: 50px auto;
+    padding: 16px 0;
+    max-width: 70%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style for the image grid container */
+.image-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    max-width: 80%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style for each column */
+.image-grid .column,
+.image-grid .column2,
+.image-grid .column3 {
+    flex: 1; /* Each column takes equal width */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style for individual images */
+.image-grid img {
+    width: 100%; /* Ensure images fill the column width */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    display: block;
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Make images visible when loaded class is added */
+.image-grid img.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll animation */
+.image-grid img.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Column 1 - First 6 images */
+.image-grid .column img:nth-child(-n+6) {
+    height: 600px;
+}
+
+/* Column 1 - Images from 7th to 11th */
+.image-grid .column img:nth-child(n+7):nth-child(-n+11) {
+    height: 720px;
+}
+
+/* Column 3 - Same as Column 1 */
+.image-grid .column3 img:nth-child(-n+6) {
+    height: 600px;
+}
+.image-grid .column3 img:nth-child(n+7):nth-child(-n+11) {
+    height: 720px;
+}
+
+/* Column 2 & 4 - Different heights */
+.image-grid .column2 img:nth-child(-n+6){
+    height: 700px;
+}
+
+
+.image-grid .column2 img:nth-child(n+7):nth-child(-n+11){
+    height: 600px;
+}
+
+
+/* Optional: For responsiveness, stack the images into one column on small screens */
+@media (max-width: 767px) {
+    .image-grid {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        max-width: 100%; /* Allow the grid to take full width on small screens */
+    }
+
+    .image-grid .column,
+    .image-grid .column2,
+    .image-grid .column3 {
+        flex: none; /* Make the columns stack and take full width */
+    }
+
+    /* Reset specific heights for mobile */
+    .image-grid img {
+        height: auto !important; /* Ensure images are responsive on mobile */
+    }
+}
