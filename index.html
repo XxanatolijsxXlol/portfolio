@@ -170,20 +170,20 @@
 </head>
 <body>
     <div id="navbar"></div>
+    
+
     <div class="gallery-container">
         <div class="gallery">
             <div class="image-wrapper">
                 <div id="slider" class="slider"></div>
             </div>
         </div>
-        <button class="nav-left">◄</button>
-        <button class="nav-right">►</button>
-        <div id="navDots" class="nav-dots"></div>
+        <button class="nav-left"><i class="fas fa-arrow-left"></i></button>
+        <button class="nav-right"><i class="fas fa-arrow-right"></i></button>
         <div class="loading-spinner" id="loadingSpinner">
             <div class="spinner"></div>
         </div>
     </div>
-    
     <section class="about-me" id="about">
         <div class="about-container">
             <h2>Par mani</h2>
@@ -202,28 +202,83 @@
         </div>
     </section>
 
-    <!-- Updated Portfolio Section with 4 Boxes -->
-    <section class="portfolio-section">
-        <a href="portfolio.html" class="portfolio-link">
-            <h2>Mans Portfolio <i class="fas fa-arrow-right"></i></h2>
-        </a>
-        <div class="link-boxes">
-            <a href="gaidibas.html" class="box1" style="background-image:url('images/gaidibas/photogaidibas1.jpg')">
-                <div class="box-label"></div>
-            </a>
-            <a href="families.html" class="box2" style="background-image:url('images/gimenes/photogimenes1.jpg')">
-                <div class="box-label"></div>
-            </a>
-            <a href="portraits.html" class="box3" style="background-image:url('images/allimages/profileimg.jpg')">
-                <div class="box-label"></div>
-            </a>
-            <a href="events.html" class="box4" style="background-image:url('images/pari/photopari1.jpg')">
-                <div class="box-label"></div>
-            </a>
+<!-- Portfolio Section -->
+<section class="portfolio-section">
+    <a href="portfolio.html" class="portfolio-link">
+        <h4>Man's Portfolio</h4>
+    </a>
+    <div class="card-container">
+        <!-- Card 1: Gaidibas -->
+        <a href="/portfolio/PORTFOLIO-GRID/gaidibas-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/gaidibas/photogaidibas2.jpg" alt="Gaidibas">
+                <div class="portfolio-category">
+                    <h3>Gaidibas <i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+               
+                    <p>Apskatīt bildes</p>
+               
+            </div>
         </div>
-    </section>
+    </a>
+        <!-- Card 2: Families -->
+        <a href="/portfolio/PORTFOLIO-GRID/gimenes-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/gimenes/photogimenes7.jpg" alt="Families">
+                <div class="portfolio-category">
+                    <h3>Ģimenes<i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+                
+                    <p>Apskatīt bildes</p>
+                   
+           
+            </div>
+        </div>
+    </a>
+        <!-- Card 3: Portraits -->
+        <a href="/portfolio/PORTFOLIO-GRID/portreti-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/portreti/portrets-photo12.jpg" alt="Portraits">
+                <div class="portfolio-category">
+                    <h3>Portreti <i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+               
+                    <p>Apskatīt bildes</p>
+                
+            </div>
+        </div>
+    </a>
+        <!-- Card 4: Events -->
+        <a href="/portfolio/PORTFOLIO-GRID/pari-grid.html">
+        <div class="card">
+            <div class="card-main">
+                <img src="images/pari/pari-photo35.jpg" alt="Events">
+                <div class="portfolio-category">
+                    <h3>Pāri <i class="fas fa-arrow-right"></i></h3>
+                </div>
+            </div>
+            <div class="card-hover">
+                
+                    <p>Apskatīt bildes</p>
+               
+            </div>
+        </div>
+    </a>
+    </div>
 
+</section>
     <script src="js/home.js"></script>
     <script src="js/navbar.js"></script>
+    <div id="footer"></div>
+
 </body>
 </html>
