@@ -39,21 +39,35 @@ nav ul {
     align-items: center;
 }
 
+/* Completely remove the existing dash solution */
+nav ul li:not(:last-child)::after {
+    display: none;
+}
+
+/* New approach: Style each list item with separator divs */
 nav ul li {
-    margin: 0 25px;
+    margin: 0;
+    padding: 0 25px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 14px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
-nav ul li:not(:last-child)::after {
+/* Add separators as separate elements after each menu item except the last */
+nav ul li:not(:last-child) {
+    border-right: 1px solid transparent; /* Transparent border for spacing */
+}
+
+/* Add the actual dash separators */
+nav ul li:not(:last-child)::before {
     content: "-";
     position: absolute;
-    right: -25px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 0;
     color: #000;
+    z-index: 5;
 }
 
 nav ul li > a {
@@ -62,6 +76,7 @@ nav ul li > a {
     display: block;
     text-transform: uppercase; /* This ensures main menu items stay uppercase */
 }
+
 nav ul li.dropdown ul.dropdown-menu li a {
     text-transform: none;
 }
@@ -82,7 +97,7 @@ nav ul li a:hover {
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
-    min-width: 150px;
+    min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 10px 0;
     z-index: 10;
@@ -114,9 +129,10 @@ nav ul li a:hover {
     margin: 5px 0;
     width: 100%;
     text-align: center;
+    border-right: none;
 }
 
-.dropdown-menu li::after {
+.dropdown-menu li::before {
     display: none;
 }
 
@@ -169,6 +185,7 @@ nav ul li a:hover {
 }
 
 /* Mobile styles */
+/* Mobile styles */
 @media (max-width: 768px) {
     .desktop-logo {
         display: none;
@@ -190,6 +207,9 @@ nav ul li a:hover {
         z-index: 2;
         padding: 30px 0;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center the content horizontally */
     }
 
     nav.active {
@@ -210,22 +230,33 @@ nav ul li a:hover {
     nav ul {
         flex-direction: column;
         justify-content: flex-start;
-        padding: 0 20px;
+        padding: 0;
+        width: 100%;
+        align-items: center; /* Center the list items */
     }
 
     nav ul li {
         margin: 15px 0;
         text-align: center;
+        border-right: none;
+        padding: 0;
+        width: 100%;
+        justify-content: center; /* Center the content inside each list item */
     }
+    
+    /* Remove separators in mobile view */
+    nav ul li:not(:last-child)::before {
+        display: none;
+    }
+    
     nav ul li > a {
         text-transform: uppercase;
+        text-align: center; /* Center the text in links */
+        width: 100%;
     }
+    
     nav ul li.dropdown ul.dropdown-menu li a {
         text-transform: none;
-    }
-
-    nav ul li:not(:last-child)::after {
-        content: "";
     }
 
     /* Mobile dropdown styles */
@@ -241,16 +272,25 @@ nav ul li a:hover {
         display: none;
         padding: 0;
         transition: none;
+        align-items: center; /* Center dropdown items */
     }
+    
+    /* This keeps the dropdown below the menu item in mobile view */
+    .dropdown {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    
     .dropdown:hover .dropdown-menu {
         display: none;
         opacity: 1;
         visibility: hidden;
     }
+    
     .dropdown::after {
         display: none;
     }
-
 
     .dropdown-menu::before {
         display: none;
@@ -260,6 +300,7 @@ nav ul li a:hover {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
     }
 
     .dropdown-toggle::after {
@@ -271,17 +312,30 @@ nav ul li a:hover {
     .dropdown.active .dropdown-menu {
         display: flex;
         visibility: visible;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
 
     .dropdown.active .dropdown-toggle::after {
         content: "▲";
     }
 
+    .dropdown-menu li {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center; /* Center dropdown items */
+    }
+
     .dropdown-menu li a:hover {
         background-color: transparent;
     }
+    
     .dropdown-menu li a {
         text-transform: lowercase; /* Maintain lowercase in mobile */
+        width: 100%;
+        text-align: center;
     }
 
     .backdrop {

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kāzu Galerijas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 40px;
+            font-size: 32px;
+
+            letter-spacing: 2px;
+            font-family: "Playfair Display", serif;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .wedding-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 200px;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .wedding-card {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+      
+        .wedding-text {
+            position: absolute;
+            font-size: large;
+        
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .wedding-card h2 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 2px;
+            font-family: "Playfair Display", serif;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 16px 38px;
+            background: transparent;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            border: 1px solid rgb(255, 255, 255);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            color: white;
+            background: #000000;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kāzu Galerijas</h1>
+
+    <div class="wedding-container" id="wedding-list"></div>
+
+    <script>
+        // Wedding data (Update with your couples' names)
+        const weddings = [
+            { name: "Agris un Ingūna", folder: "agris-inguna", image: "images/weddings/agris-inguna/banner.jpg" },
+            { name: "Aldis un Kristīne", folder: "aldis-kristine", image: "images/weddings/aldis-kristine/banner.jpg" },
+            { name: "Artūrs un Kristīne", folder: "arturs-kristine", image: "images/weddings/arturs-kristine/banner.jpg" },
+            { name: "Igors un Rozālija", folder: "igors-rozalija", image: "images/weddings/igors-rozalija/banner.jpg" },
+            { name: "Jānis un Santa", folder: "janis-santa", image: "images/weddings/janis-santa/banner.jpg" },
+            { name: "Kristaps un Ieva", folder: "kristaps-ieva", image: "images/weddings/kristaps-ieva/banner.jpg" },
+            { name: "Mārtiņš un Laine", folder: "martins-laine", image: "images/weddings/martins-laine/banner.jpg" },
+            { name: "Patriks un Udine", folder: "patriks-udine", image: "images/weddings/patriks-udine/banner.jpg" },
+            { name: "Vladislavs un Laura", folder: "vladislavs-laura", image: "images/weddings/vladislavs-laura/banner.jpg" }
+        ];
+
+        // Get container
+        const weddingContainer = document.getElementById("wedding-list");
+
+        // Generate wedding cards dynamically
+        weddings.forEach(wedding => {
+            const weddingCard = document.createElement("div");
+            weddingCard.classList.add("wedding-card");
+            weddingCard.style.backgroundImage = `url('${wedding.image}')`;
+
+            weddingCard.innerHTML = `
+                <div class="wedding-overlay"></div>
+                <div class="wedding-text">
+                    <h2>${wedding.name}</h2>
+                    <a href="gallery.html?wedding=${wedding.folder}" class="btn">SKATĪT</a>
+                </div>
+            `;
+
+            weddingContainer.appendChild(weddingCard);
+        });
+    </script>
+
+</body>
+</html>

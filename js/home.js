@@ -29,7 +29,6 @@ for (let i = 1; i <= 3; i++) {
     });
 }
 
-
 // Create a copy of the original images array with clones at beginning and end
 let images = [];
 
@@ -47,7 +46,7 @@ function init() {
     createSlides();
     
     // Calculate slideWidth after DOM update
-    slideWidth = galleryContainer.offsetWidth;
+    updateSlideWidth();
     
     // Start with the first real image (index 1, since index 0 is the clone of the last)
     currentIndex = 1;
@@ -61,10 +60,16 @@ function init() {
     // Start autoplay
     startAutoplay();
     
+    // Improved resize handling
     window.addEventListener("resize", throttle(() => {
-        slideWidth = galleryContainer.offsetWidth;
+        updateSlideWidth();
         updateSliderPosition(false);
     }, 200));
+}
+
+// New function to update slide width
+function updateSlideWidth() {
+    slideWidth = galleryContainer.offsetWidth;
 }
 
 function createSlides() {
@@ -140,10 +145,16 @@ function initEventListeners() {
         }
     });
 
+    // Improved touch handling for mobile
     galleryContainer.addEventListener("touchstart", (e) => {
         touchStartX = e.changedTouches[0].screenX;
         stopAutoplay();
     }, { passive: true });
+
+    galleryContainer.addEventListener("touchmove", (e) => {
+        // Prevent default scrolling when swiping the gallery
+        e.preventDefault();
+    }, { passive: false });
 
     galleryContainer.addEventListener("touchend", (e) => {
         touchEndX = e.changedTouches[0].screenX;

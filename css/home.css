@@ -9,25 +9,21 @@ html {
 }
 
 body {
-    background-color: #fff; /* White background */
+    background-color: #fff;
     color: #333;
-  
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Header and Logo */
 .header {
     position: relative;
-    background-color: #fff; /* White background */
-}
-
-button .nav-left .nav-left {
-    display: none;
+    background-color: #fff;
 }
 
 .logo-container {
     text-align: center;
     padding: 20px 0;
-    background-color: #fff; /* White background */
+    background-color: #fff;
     position: fixed;
     top: 0;
     left: 0;
@@ -40,8 +36,6 @@ button .nav-left .nav-left {
     height: auto;
 }
 
-
-
 /* Gallery container styles */
 .gallery-container {
     width: 95%;
@@ -51,6 +45,7 @@ button .nav-left .nav-left {
     position: relative;
     background-color: #fff;
     overflow: hidden;
+    touch-action: pan-y; /* Allow vertical scrolling but handle horizontal swipes */
 }
 
 .gallery {
@@ -93,7 +88,7 @@ button .nav-left .nav-left {
 .slide img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* This will ensure the image maintains its aspect ratio */
+    object-fit: contain;
     display: block;
     transition: opacity 0.5s ease;
 }
@@ -157,22 +152,6 @@ button .nav-left .nav-left {
     100% { transform: rotate(360deg); }
 }
 
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-    .gallery-container {
-        width: 90%;
-        height: 50vh;
-        margin-top: 130px;
-    }
-    
-    .nav-left,
-    .nav-right {
-        font-size: 1.5rem;
-        width: 40px;
-        height: 40px;
-    }
-}
-
 /* For portrait and landscape images to fit properly */
 .slide img[src*="sakumimg"] {
     max-height: 95%;
@@ -183,79 +162,16 @@ button .nav-left .nav-left {
     max-width: 95%;
     height: auto;
 }
-/* Loading Spinner */
-.loading-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    z-index: 100; /* Ensure spinner is above everything */
-}
-
-.spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #d3c8a7; /* Kept for contrast, change to #fff if desired */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Responsive Design for Slider */
-@media (max-width: 768px) {
-    .gallery-container {
-        width: 90%;
-        height: 50vh;
-        margin-top: 130px;
-    }
-
-    .gallery {
-        height: 100%;
-    }
-
-    .image-wrapper {
-        width: 100%; /* Full width on mobile */
-    }
-
-    .slide {
-        flex: 0 0 calc(100% - 5px); /* Show only one slide on mobile */
-        margin: 0 2.5px;
-    }
-
-    .slide:hover {
-        flex: 0 0 calc(100% - 5px); /* No expansion on mobile to avoid layout issues */
-    }
-}
-.spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #d3c8a7; /* Kept for contrast, change to #fff if desired */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
 
 /* About Me Section */
 .about-me {
     width: 100%;
     padding: 100px 0;
-    
     text-align: center;
 }
 
 .about-container {
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -264,7 +180,6 @@ button .nav-left .nav-left {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
     font-size: 2.8rem;
-   
     color: #7d6e5d;
     letter-spacing: 1px;
     position: relative;
@@ -284,27 +199,21 @@ button .nav-left .nav-left {
 .about-content {
     margin-top: 10vh;
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Adjusted ratio to give more space to text */
-    gap: 40px; /* Reduced gap to prevent squishing */
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
     align-items: center;
     justify-content: center;
 }
 
 .about-image-container {
     position: relative;
-
-   
 }
-
-
 
 .about-image {
     width: 100%;
     height: auto;
     object-fit: cover;
-
 }
-
 
 .about-text {
     text-align: left;
@@ -312,16 +221,15 @@ button .nav-left .nav-left {
     position: relative;
     font-family: 'Lora', serif;
     font-weight: 400;
-    margin-top: 20vh;
-    margin-left: 2vh; /* Lowered the text slightly for a stylized look */
+    margin-left: 2vh;
 }
 
 .about-text::before {
     content: "";
     position: absolute;
-    width: 1px; /* Bold vertical line */
+    width: 1px;
     height: 100%;
-    background-color: #7d6e5d; /* Line color */
+    background-color: #7d6e5d;
     left: -20px;
     top: 0;
 }
@@ -340,120 +248,166 @@ button .nav-left .nav-left {
 .about-text .highlight {
     font-family: 'Lora', serif;
     font-weight: 400;
-    font-style: italic; /* Use italic for highlighted text */
+    font-style: italic;
     color: #7d6e5d;
 }
 
-.about-signature {
-    font-family: 'Great Vibes', cursive; /* Use Great Vibes for signature */
+/* Portfolio Section Styling */
+.portfolio-section {
+    background-color: white;
+    width: 100%;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.portfolio-link {
+    color: #7d6e5d;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+h4 {
+    font-family: 'Playfair Display', serif;
     font-weight: 400;
-    font-style: normal;
-    font-size: 1.4rem;
-    margin-top: 30px;
+    font-size: 2.8rem;
     color: #7d6e5d;
+    letter-spacing: 1px;
+    position: relative;
 }
 
-/* Responsive Design for About Section */
-@media (max-width: 992px) {
-    .about-content {
-        grid-template-columns: 1fr; /* Stack image and text on smaller screens */
-        gap: 30px; /* Reduced gap for better spacing */
-    }
-
-    .about-image-container {
-        max-width: 380px; /* Slightly smaller image on medium screens */
-        transform: rotate(0deg); /* Remove tilt on smaller screens for better fit */
-    }
-
-    .about-image-container::before {
-        transform: rotate(0deg); /* Remove counter-rotation on smaller screens */
-    }
-
-    .about-text {
-        padding: 0; /* Remove padding to prevent squishing */
-        margin-top: 20px; /* Reduced margin for better balance on smaller screens */
-    }
+.portfolio-link::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: #d3c8a7;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-@media (max-width: 768px) {
-    body {
-        margin: 0 20px; /* Reduced margin on mobile */
-    }
-
-    .about-me {
-        padding: 50px 0; /* Reduced padding for mobile */
-    }
-
-    .about-container h2 {
-        font-size: 2rem; /* Smaller heading on mobile */
-        margin-bottom: 30px;
-    }
-
-    .about-image-container {
-        max-width: 300px; /* Smaller image on mobile */
-        transform: rotate(0deg); /* Ensure no tilt on mobile */
-    }
-
-    .about-image-container::before {
-        transform: rotate(0deg); /* Ensure no counter-rotation on mobile */
-    }
-
-    .about-text {
-        padding: 0; /* Remove padding to prevent squishing */
-        margin-top: 20px; /* Consistent margin on mobile */
-    }
-
-    .about-text::before {
-        display: none; /* Remove the vertical line on mobile for better layout */
-    }
-
-    .about-text p {
-        font-family: 'Lora', serif; /* Ensure consistency on mobile */
-        font-weight: 400;
-        font-style: normal; /* Use regular style for readability */
-        font-size: 1rem; /* Smaller font size on mobile */
-        line-height: 1.7;
-    }
-
-    .about-signature {
-        font-size: 1.2rem;
-    }
-
-    .logo-container {
-        padding: 10px 0;
-    }
-
-    .logo {
-        max-width: 150px;
-    }
-
-    .navbar-placeholder {
-        margin-top: 70px;
-    }
-
-    .gallery-container {
-        width: 90%;
-        height: 50vh;
-        margin-top: 130px;
-    }
-
-    .gallery {
-        height: 100%;
-    }
-
-    .image-wrapper {
-        width: 80%; /* Reduced from 90% to allow peeking on both sides */
-    }
-
-    .slide {
-        flex: 0 0 calc(60% - 5px); /* Bigger images on mobile */
-        margin: 0 2.5px;
-    }
+.portfolio-link:hover {
+    color: #5a5245;
 }
 
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    gap: 2rem;
+}
 
+/* Card Styling */
+.card {
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
+/* Card Main Section */
+.card-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.card:hover .card-main img {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* Portfolio Category */
+.card-main .portfolio-category {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.card-main .portfolio-category h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.card-main .portfolio-category i {
+    font-size: 1rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-main .portfolio-category h3,
+.card:hover .card-main .portfolio-category i {
+    color: #d3c8a7;
+}
+
+/* Card Hover Section */
+.card-hover {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(211, 200, 167, 0.9);
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    font-family: 'Lora', serif;
+    color: #5a5245;
+    text-decoration: none;
+}
+
+/* Description Text */
+.card-hover p {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    color: #5a5245;
+    margin: 0.5rem 0;
+}
+
+.card-hover p a {
+    padding: 50px;
+}
+
+/* Card Hover Effect */
+.card:hover .card-hover {
+    opacity: 1;
+    transform: translateY(0);
+    cursor: pointer;
+}
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
@@ -474,242 +428,172 @@ button .nav-left .nav-left {
     background: #555;
 }
 
-
-
-
 img {
     max-width: 100%;
     display: block;
 }
-/* Portfolio Section Styling */
-.portfolio-section {
-    background-color: white;
-    width: 100%;
-    padding: 100px 0; /* Consistent padding with other sections */
-     /* Match the about-me section background */
-    text-align: center;
-}
 
-.portfolio-link {
-    color: #7d6e5d; /* Match the about-me heading color */
-    text-decoration: none;
-    font-size: 2.8rem; /* Match the about-me heading size */
-    font-family: 'Playfair Display', serif; /* Match typography */
-    font-weight: 400;
-    letter-spacing: 1px;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 50px; /* Space below the heading */
-}
+/* IMPROVED RESPONSIVE STYLES */
 
-.portfolio-link::after {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 3px;
-    background-color: #d3c8a7; /* Match the about-me heading underline */
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.portfolio-link:hover {
-    color: #5a5245; /* Slightly darker on hover for contrast */
-}
-
-/* Card Container */
-.card-container {
-    
-    display: grid;
-    grid-template-columns: repeat(4, minmax(300px, 1fr));
-    width: 90%;
-    max-width: 1600px; /* Match the about-me container width */
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    gap: 2rem; /* Consistent gap with other sections */
-}
-
-/* Card Styling */
-.card {
-    aspect-ratio: 1 / 1;
-    background: #fff; /* White background to match site aesthetic */
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-}
-
-.card:hover {
-    transform: translateY(-10px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-/* Animation for Card Entry */
-@keyframes swing-in-top-fwd {
-    0% {
-        transform: rotateX(-100deg);
-        transform-origin: top;
-        opacity: 0;
-    }
-    100% {
-        transform: rotateX(0deg);
-        transform-origin: top;
-        opacity: 1;
-    }
-}
-
-/* Card Main Section */
-.card-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    position: relative; /* Ensure the category name is positioned relative to this */
-}
-
-.card-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  
-    transition: filter 0.3s ease; /* Smooth filter transition */
-}
-
-.card:hover .card-main img {
-    filter: grayscale(0%) brightness(1); /* Full color on hover */
-}
-
-/* Portfolio Category (Category Name + Arrow) */
-.card-main .portfolio-category {
-    position: absolute;
-    bottom: 1rem; /* Position at the bottom of the card */
-    left: 1rem; /* Align to the left */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Space between text and arrow */
-    padding: 0.5rem 1rem; /* Padding for a clean look */
-    border-radius: 4px; /* Slightly rounded corners */
-}
-h4{
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: 2.8rem;
-   
-    color: #7d6e5d;
-    letter-spacing: 1px;
-    position: relative;
-}
-.card-main .portfolio-category h3 {
-    font-family: 'Playfair Display', serif; /* Match site typography */
-    font-weight: 400;
-  
-    font-size: 1.5rem; /* Slightly larger for emphasis */
-    color: #ffffff; /* Match site link color */
-    margin: 0; /* Remove default margin */
-}
-
-.card-main .portfolio-category i {
-    font-size: 1rem; /* Slightly smaller arrow */
-    color: #ffffff; /* Match site link color */
-    transition: color 0.3s ease;
-}
-
-/* Hover effect on the category name and arrow */
-.card:hover .card-main .portfolio-category h3,
-.card:hover .card-main .portfolio-category i {
-    color: #d3c8a7; /* Match site hover color */
-}
-
-/* Card Hover Section */
-.card-hover {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    text-align: center;
-    background: rgba(211, 200, 167, 0.9); /* Match site color scheme with transparency */
-    gap: 1rem;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-    font-family: 'Lora', serif; /* Match site typography */
-    color: #5a5245; /* Match text color */
-    text-decoration: none; /* Ensure no underline on the link */
-}
-
-/* Description Text */
-.card-hover p {
-    font-family: 'Lora', serif; /* Match site typography */
-    font-size: 2rem;
-    color: #5a5245; /* Match text color */
-    margin: 0.5rem 0; /* Add some spacing */
-
-}
-.card-hover p a {
-padding: 50px;
-
-    
-}
-/* Card Hover Effect */
-.card:hover .card-hover {
-    opacity: 1;
-    transform: translateY(0);
-    cursor: pointer;
-}
-
-/* Responsive Design for Portfolio Section */
+/* Tablet Media Queries */
 @media (max-width: 992px) {
+    /* About section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .about-image-container {
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .about-text {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 0 20px;
+    }
+    
+    .about-text::before {
+        display: none;
+    }
+    
+    /* Portfolio section */
     .card-container {
-        grid-template-columns: repeat(2, minmax(250px, 1fr)); /* Two cards per row on medium screens */
-        gap: 1.5rem; /* Reduced gap */
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        gap: 1.5rem;
     }
-
-    .portfolio-link {
-        font-size: 2.2rem; /* Smaller heading */
+    
+    .portfolio-link h4 {
+        font-size: 2.2rem;
     }
-
+    
     .card-main .portfolio-category h3 {
-        font-size: 1.3rem; /* Smaller heading on medium screens */
+        font-size: 1.3rem;
     }
-
-    .card-main .portfolio-category i {
-        font-size: 0.9rem; /* Smaller arrow on medium screens */
+    
+    /* Navigation buttons */
+    .nav-left, .nav-right {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
     }
 }
 
+/* Mobile Media Queries */
 @media (max-width: 768px) {
-    .portfolio-section {
-        padding: 50px 0; /* Reduced padding on mobile */
+    /* General */
+    body {
+        padding: 0;
+        margin: 0;
     }
-
-    .portfolio-link {
-        font-size: 2rem; /* Smaller heading on mobile */
+    
+    /* Gallery/Slider */
+    .gallery-container {
+        width: 100%;
+        height: 60vh;
+        margin: 80px auto 0;
+        overflow: hidden;
+        padding: 0;
+    }
+    
+    .image-wrapper {
+        width: 100%;
+    }
+    
+    .slide {
+        flex: 0 0 100%;
+    }
+    
+    .nav-left {
+        left: 10px;
+    }
+    
+    .nav-right {
+        right: 10px;
+    }
+    
+    .nav-left, .nav-right {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+    
+    /* About section */
+    .about-me {
+        padding: 50px 15px;
+    }
+    
+    .about-container {
+        width: 100%;
+    }
+    
+    .about-container h2 {
+        font-size: 2rem;
+    }
+    
+    .about-content {
+        margin-top: 50px;
+    }
+    
+    .about-image-container {
+        max-width: 300px;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Portfolio section */
+    .portfolio-section {
+        padding: 50px 15px;
+    }
+    
+    .portfolio-link h4 {
+        font-size: 2rem;
         margin-bottom: 30px;
     }
-
+    
     .card-container {
-        grid-template-columns: repeat(1, minmax(250px, 1fr)); /* One card per row on mobile */
-        gap: 1rem; /* Reduced gap on mobile */
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
-
-    .card-main .portfolio-category h3 {
-        font-size: 1.2rem; /* Smaller heading on mobile */
+    
+    .card {
+        max-width: 400px;
+        margin: 0 auto;
     }
-
-    .card-main .portfolio-category i {
-        font-size: 0.8rem; /* Smaller arrow on mobile */
-    }
-
+    
     .card-hover p {
-        font-size: 0.9rem; /* Smaller description text on mobile */
+        font-size: 1.5rem;
     }
+}
 
-    .tag {
-        font-size: 0.7rem; /* Smaller tags on mobile */
+/* Small Mobile Media Query */
+@media (max-width: 480px) {
+    .gallery-container {
+        height: 50vh;
+    }
+    
+    .about-container h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .card-hover p {
+        font-size: 1.2rem;
+    }
+    
+    .nav-left, .nav-right {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
     }
 }
